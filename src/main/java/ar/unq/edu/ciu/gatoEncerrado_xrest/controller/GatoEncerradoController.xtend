@@ -8,6 +8,9 @@ import org.uqbar.xtrest.api.Result
 import org.uqbar.xtrest.http.ContentType
 import ar.unq.edu.ciu.gatoEncerrado_xrest.tos.repo.RepoBibliotecaJuego
 
+import org.uqbar.commons.model.UserException
+
+
 @Controller
 class GatoEncerradoController {
 	
@@ -23,7 +26,24 @@ class GatoEncerradoController {
 		val laberintos =  RepoBibliotecaJuego.instance.laberintosMin;
 		response.contentType = ContentType.APPLICATION_JSON;
 		ok(laberintos.toJson);
-	}	
+	}
 	
-	
-}
+	@Get("/laberinto/:iduser :idlab")	
+	def Result laberinto()
+	{
+		val idLab =Integer.valueOf(idlab)
+		val idUser=Integer.valueOf(iduser)
+		
+		try {
+			response.contentType = "application/json"
+			val laberinto=RepoBibliotecaJuego.instance.buscarLab(idUser,idLab)
+			ok(RepoBibliotecaJuego.transformarALabMostrable(laberinto,RepoBibliotecaJuego.instance.getInventarioDeLaberintoDeUser(idUser,idLab)).toJson)
+		} 
+		catch (UserException e) {
+			notFound("No existe el laberinto con '" + idLab + "'");
+		}
+	}
+		
+		
+		
+	}
