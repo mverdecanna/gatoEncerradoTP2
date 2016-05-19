@@ -39,6 +39,7 @@ class RepoBibliotecaJuego {
 		]
 		bibliotecas.add(biblioteca);
 		repoImagenes = new RepoImagenes;
+		repoUsuario = new RepoUsuarios
 	}
 	
 	def getInventarioDeLaberintoDeUser(Integer idUser,Integer idLaberinto){
@@ -82,8 +83,7 @@ class RepoBibliotecaJuego {
 	val inventarioMin= inventario.map[item|transformarItemEnElementoMin(item)]
 	habitacionesMin.addAll(laberinto.habitaciones.map[hab| transformarHabitacionAHabitacionMin(hab)])
 	
-	
-		return new LaberintoVista(laberinto.id,laberinto.nombreLaberinto,habitacionesMin,inventarioMin)	
+	return new LaberintoVista(laberinto.id,laberinto.nombreLaberinto,habitacionesMin,inventarioMin)	
 		
 		}
 	
@@ -92,8 +92,7 @@ class RepoBibliotecaJuego {
 	}
 
 	def static transformarHabitacionAHabitacionMin(Habitacion hab){
-		var accionesMin= hab.acciones.map[acc| transformarAccionAAccionMin(acc)]
-		
+		var accionesMin= hab.acciones.map[acc| transformarAccionAAccionMin(acc)]	
 		return new HabitacionMin(hab.id,hab.nombreHabitacion,accionesMin)
 		
 	}
