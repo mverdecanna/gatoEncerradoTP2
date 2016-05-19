@@ -71,6 +71,7 @@ class RepoBibliotecaJuego {
 		print (aux);
 		return aux;
 	}
+
 	
 	def buscarLab(Integer idUsuario, Integer idLab) {
 		val laberinto = new Laberinto()
@@ -102,4 +103,3 @@ class RepoBibliotecaJuego {
 	}
 
 }	
-	

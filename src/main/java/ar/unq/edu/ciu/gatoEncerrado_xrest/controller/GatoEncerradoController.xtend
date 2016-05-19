@@ -7,7 +7,9 @@ import org.uqbar.xtrest.api.annotation.Get
 import org.uqbar.xtrest.api.Result
 import org.uqbar.xtrest.http.ContentType
 import ar.unq.edu.ciu.gatoEncerrado_xrest.tos.repo.RepoBibliotecaJuego
+
 import org.uqbar.commons.model.UserException
+
 
 @Controller
 class GatoEncerradoController {
@@ -64,5 +66,3 @@ class GatoEncerradoController {
 		
 		
 	}
-	
-	
