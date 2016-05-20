@@ -24,6 +24,7 @@ class GatoEncerradoController {
 	@Get("/laberintos")
 	def Result laberintos() {
 		val laberintos =  RepoBibliotecaJuego.instance.laberintosMin;
+		
 		response.contentType = ContentType.APPLICATION_JSON;
 		ok(laberintos.toJson);
 	}
@@ -37,11 +38,29 @@ class GatoEncerradoController {
 		try {
 			response.contentType = "application/json"
 			val laberinto=RepoBibliotecaJuego.instance.buscarLab(idUser,idLab)
-			ok(RepoBibliotecaJuego.transformarALabMostrable(laberinto,RepoBibliotecaJuego.instance.getInventarioDeLaberintoDeUser(idUser,idLab)).toJson)
+	//		ok(ControllerXrestModel.transformarALabMostrable(laberinto,RepoBibliotecaJuego.instance..toJson)
+		ok()
 		} 
 		catch (UserException e) {
 			notFound("No existe el laberinto con '" + idLab + "'");
 		}
+	}
+	@Get("/hacerAccion/:idhab :idacc")
+	def Result hacerAccion(){
+		val idHab =Integer.valueOf(idhab)
+		val idAcc=Integer.valueOf(idacc)
+		
+		try {
+			response.contentType = "application/json"
+			ok()
+		} 
+		catch (UserException e) {
+			notFound("No existe la accion en la habitacion ");
+		}
+		
+		ok()
+		
+		
 	}
 		
 		

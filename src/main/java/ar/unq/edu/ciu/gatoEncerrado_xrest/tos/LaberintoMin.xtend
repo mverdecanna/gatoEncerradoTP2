@@ -16,5 +16,10 @@ class LaberintoMin {
 		this.id = id;
 	}
 	
+	new(String string, Integer id) {
+		this.nombreLaberinto=string
+		this.id=id
+	}
+	
 	
 }
