@@ -9,7 +9,7 @@ import org.uqbar.xtrest.http.ContentType
 import ar.unq.edu.ciu.gatoEncerrado_xrest.tos.repo.RepoBibliotecaJuego
 
 import org.uqbar.commons.model.UserException
-
+import ar.unq.edu.ciu.gatoEncerrado_xrest.tos.repo.RepoUsuarios
 
 @Controller
 class GatoEncerradoController {
@@ -40,9 +40,9 @@ class GatoEncerradoController {
 		try {
 			response.contentType = "application/json"
 			val laberinto=RepoBibliotecaJuego.instance.buscarLab(idLab)
-			//val estadoLab=RepoUsuarios.get(iduser).getEstadoDeJuegoDeLab(idlab)
-	//		ok(ControllerXrestModel.transformarALabMostrable(laberinto,RepoBibliotecaJuego.instance..toJson)
-		ok()
+			val estadoLab=RepoBibliotecaJuego.instance.repoUsuario.getEstadoDeJuego(idUser,idLab)
+		ok(ControllerXrestModel.transformarALabMostrable(laberinto,estadoLab).toJson)
+		
 		} 
 		catch (UserException e) {
 			notFound("No existe el laberinto con '" + idLab + "'");
@@ -63,7 +63,7 @@ class GatoEncerradoController {
 			notFound("No existe la accion en la habitacion ");
 		}
 		
-		ok()
+		
 	}
 		
 		

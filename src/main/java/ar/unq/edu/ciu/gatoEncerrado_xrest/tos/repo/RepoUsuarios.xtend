@@ -7,9 +7,10 @@ class RepoUsuarios {
 	
 	Map<Integer, Jugador> user;
 	
-	def getInventario(Integer userId,Integer laberintoId){
-		//Mirar esto puesto para probar nomas
-		user.get(userId)
+	def getEstadoDeJuego(Integer userId,Integer laberintoId){
+		
+		 return user.get(userId).partidas.get(laberintoId)
+		
 	}
 
 
