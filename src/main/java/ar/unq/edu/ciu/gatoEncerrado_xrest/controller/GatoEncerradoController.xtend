@@ -23,8 +23,7 @@ class GatoEncerradoController {
 
 	@Get("/laberintos")
 	def Result laberintos() {
-		val laberintos =  RepoBibliotecaJuego.instance.laberintosMin;
-		
+		val laberintos=ControllerXrestModel.allLaberintosMin(RepoBibliotecaJuego.instance.biblioteca.laberintos, RepoBibliotecaJuego.instance.repoImagenes)
 		response.contentType = ContentType.APPLICATION_JSON;
 		ok(laberintos.toJson);
 	}
