@@ -18,6 +18,8 @@ String nombre
 class LaberintoVista extends ObjetoMin{
 List<HabitacionMin> habitacionesmin
 List<ElementoMin> inventarioMin
+HabitacionMin habitacionMostrar
+
 	
 	new (Integer id,String nombre,List<HabitacionMin> hab,List<ElementoMin> inv){
 		super(id,nombre)

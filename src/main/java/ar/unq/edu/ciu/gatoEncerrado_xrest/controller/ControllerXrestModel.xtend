@@ -12,6 +12,7 @@ import dominioElementosDeljuego.Accion
 import ar.unq.edu.ciu.gatoEncerrado_xrest.tos.AccionMin
 import ar.unq.edu.ciu.gatoEncerrado_xrest.tos.LaberintoMin
 import ar.unq.edu.ciu.gatoEncerrado_xrest.tos.repo.RepoImagenes
+import dominioElementosDeljuego.EstadoDeJuego
 
 class ControllerXrestModel {
 	
@@ -52,10 +53,10 @@ class ControllerXrestModel {
 ////		return laberinto
 ////	}
 	
-	def static transformarALabMostrable( Laberinto laberinto,List<Item> inventario) {
+	def static transformarALabMostrable( Laberinto laberinto,EstadoDeJuego est) {
 	val habitacionesMin = new ArrayList<HabitacionMin>
-	val inventarioMin= inventario.map[item|transformarItemEnElementoMin(item)]
-	habitacionesMin.addAll(laberinto.habitaciones.map[hab| transformarHabitacionAHabitacionMin(hab)])
+	val inventarioMin= est.inventario.map[item|transformarItemEnElementoMin(item)]
+	habitacionesMin.addAll(laberinto.habitaciones.map[hab| transformarHabitacionAHabitacionMin(hab,est)])
 	
 	return new LaberintoVista(laberinto.id,laberinto.nombreLaberinto,habitacionesMin,inventarioMin)	
 		
@@ -65,8 +66,8 @@ class ControllerXrestModel {
 		return new ElementoMin(item.id,item.nombre,item.descripcion)
 	}
 
-	def static transformarHabitacionAHabitacionMin(Habitacion hab){
-		var accionesMin= hab.acciones.map[acc| transformarAccionAAccionMin(acc)]	
+	def static transformarHabitacionAHabitacionMin(Habitacion hab,EstadoDeJuego est){
+		var accionesMin= est.accionesPartidaDeHab(hab).map[acc| transformarAccionAAccionMin(acc)]	
 		return new HabitacionMin(hab.id,hab.nombreHabitacion,accionesMin)
 		
 	}
@@ -74,4 +75,5 @@ class ControllerXrestModel {
 	def static transformarAccionAAccionMin(Accion acc){
 		return new AccionMin(acc.id,acc.nombreAccion)
 	}
+	
 }

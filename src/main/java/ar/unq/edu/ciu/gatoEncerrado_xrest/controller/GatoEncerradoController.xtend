@@ -37,7 +37,8 @@ class GatoEncerradoController {
 		
 		try {
 			response.contentType = "application/json"
-			val laberinto=RepoBibliotecaJuego.instance.buscarLab(idUser,idLab)
+			val laberinto=RepoBibliotecaJuego.instance.buscarLab(idLab)
+			//val estadoLab=RepoUsuarios.get(iduser).getEstadoDeJuegoDeLab(idlab)
 	//		ok(ControllerXrestModel.transformarALabMostrable(laberinto,RepoBibliotecaJuego.instance..toJson)
 		ok()
 		} 

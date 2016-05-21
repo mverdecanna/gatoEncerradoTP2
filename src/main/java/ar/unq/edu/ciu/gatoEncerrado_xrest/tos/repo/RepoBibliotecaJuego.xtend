@@ -73,7 +73,7 @@ class RepoBibliotecaJuego {
 	}
 
 	
-	def buscarLab(Integer idUsuario, Integer idLab) {
+	def buscarLab(Integer idLab) {
 		val laberinto = new Laberinto()
 		//return bibliotecas.get(idUsuario).getLaberinto(idLab)
 		return laberinto

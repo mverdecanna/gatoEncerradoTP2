@@ -8,7 +8,7 @@ class RepoUsuarios {
 	
 	def getInventario(Integer userId,Integer laberintoId){
 		//Mirar esto puesto para probar nomas
-		user.get(userId).inventario
+		user.get(userId)
 	}
 	
 	}
