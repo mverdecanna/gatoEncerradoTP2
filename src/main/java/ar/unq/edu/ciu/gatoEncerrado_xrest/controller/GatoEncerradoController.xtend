@@ -16,10 +16,12 @@ class GatoEncerradoController {
 	
 	
 	extension JSONUtils = new JSONUtils
+	
 
 	def static void main(String[] args) {
 		XTRest.start(GatoEncerradoController, 9000)
 	}
+
 
 	@Get("/laberintos")
 	def Result laberintos() {
@@ -28,9 +30,10 @@ class GatoEncerradoController {
 		ok(laberintos.toJson);
 	}
 	
+	
 	@Get("/laberinto/:iduser :idlab")	
-	def Result laberinto()
-	{
+	def Result laberinto(){
+	
 		val idLab =Integer.valueOf(idlab)
 		val idUser=Integer.valueOf(iduser)
 		
@@ -45,6 +48,8 @@ class GatoEncerradoController {
 			notFound("No existe el laberinto con '" + idLab + "'");
 		}
 	}
+	
+	
 	@Get("/hacerAccion/:idhab :idacc")
 	def Result hacerAccion(){
 		val idHab =Integer.valueOf(idhab)
@@ -59,8 +64,6 @@ class GatoEncerradoController {
 		}
 		
 		ok()
-		
-		
 	}
 		
 		

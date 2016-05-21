@@ -17,11 +17,12 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 class RepoBibliotecaJuego {
 
-	BibliotecaDeJuego biblioteca // Pensar aca si no es mejor un Map ,para buscar las bibliotecas de juego por id del jugador
+	BibliotecaDeJuego biblioteca; // Pensar aca si no es mejor un Map ,para buscar las bibliotecas de juego por id del jugador
 	RepoImagenes repoImagenes;
 	RepoUsuarios repoUsuario;
 	
 	private static RepoBibliotecaJuego instance;
+	
 	
 	def static RepoBibliotecaJuego instance(){
 		if(instance == null){
@@ -46,6 +47,7 @@ class RepoBibliotecaJuego {
 	def String getPath(int id) {
 		return this.repoImagenes.getPath(id);
 	}
+	
 	
 	def buscarLab(Integer integer) {
 		 return biblioteca.laberintos.findFirst[lab | lab.id.equals(integer)]
