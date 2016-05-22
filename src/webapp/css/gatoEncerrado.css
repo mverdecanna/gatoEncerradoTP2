@@ -45,3 +45,42 @@
     border-style:groove;
     border-color: #cce5ff;
 }
+
+li:HOVER{
+	background-color: #b3ccff;
+}
+
+img.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#hoverDeLaberinto {
+	background-color: #b3ccff;
+}
+
+#imagenLaberinto{
+		
+	width: 600px;
+    height: 350px;
+    text-align: center;
+}
+
+#borderimg2 { 
+    width: 600px;
+    height: 350px;
+    border: 10px solid transparent;
+    padding: 15px;
+    -webkit-border-image: url(imagenes/casa-terror.jpg) 30 stretch; /* Safari 3.1-5 */
+    -o-border-image: url(imagenes/casa-terror.jpg) 30 stretch; /* Opera 11-12.1 */
+    border-image: url(imagenes/casa-terror.jpg) 30 stretch;
+}
+
+#borderimg3 { 
+    border: 10px solid transparent;
+    padding: 15px;
+    -webkit-border-image: url(casa-terror.jpg) 30 stretch; /* Safari 3.1-5 */
+    -o-border-image: url(casa-terror.jpg) 30 stretch; /* Opera 11-12.1 */
+    border-image: url(casa-terror.jpg) 30 stretch;
+}

@@ -1,6 +1,7 @@
 'use strict';
 angular.module('gatoEncerradoApp', [ ])
 
+
 /*//configure our routes
 gatoEncerradoApp.config(function($routeProvider) {
 $routeProvider
