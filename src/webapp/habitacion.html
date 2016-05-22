@@ -1,0 +1,59 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="css/gatoEncerrado.css"/>
+  <meta charset="utf-8">
+  <script src="js/scripts.js"></script>
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+  <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    
+    <h3 style="text-align:center">nombreLaberintoActual</h3>
+
+    <div class="col-md-8">
+    		<!-- 3 paneles.. habitacionActual, accionesDeLaHabitacion, inventarioJugador -->
+    <div id= "borderHabitacion" class="col-md-10">
+    	<div class="col-md-8">
+   			<p>habitacionActual</p>
+   			<!-- aca va la imagen de la habitacionActual -->
+	    	<img class="img-responsive" src="" alt="">
+   		</div>
+   		<div id="borderAcciones" class="col-md-4">
+   			<p>Acciones</p>
+   			<ul class="list-unstyled">
+                <li ng-repeat="item in inventario">  
+                    <button>accion.nombre</button>
+                 	item.nombre 
+              	</li>
+            </ul>
+   		</div>
+
+	</div>	
+	<div id="borderInventario" class="col-md-2" >
+   			<p>Inventario</p>
+   			<ul class="list-unstyled">
+   			<li ng-repeat="item in inventario">  
+                    <button>accion.nombre</button>
+                 	item.nombre 
+              	</li>
+   			</ul>
+   			<button type="button" class="btn btn-primary">Tirar</button>
+   	</div>	
+    </div>
+    
+    
+    
+
+
+  
+</body>
+</html>
+
+
+

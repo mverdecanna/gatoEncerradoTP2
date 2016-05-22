@@ -1,0 +1,47 @@
+#letrasLogin {
+	color: white;
+}
+
+#header {
+	background-color: #006600;
+	color: white;
+	text-align: center;
+	padding: 5px;
+}
+
+#imgGatoEncerrado {
+	max-width: 100px;
+	max-height: 100px;
+}
+
+.grow {
+	transition: all .2s ease-in-out;
+}
+
+.grow:hover {
+	transform: scale(1.1);
+}
+
+#footer {
+	background-color: #505050;
+	color: white;
+	text-align: center;
+}
+
+#borderHabitacion {
+    border-width:2px;	
+    border-style:groove;
+    border-color: #cce5ff; 
+}
+
+#borderAcciones {
+	border-width:2px;	
+    border-style:groove;
+    border-color: #cce5ff;
+}
+
+#borderInventario {
+	border-width:2px;	
+    border-style:groove;
+    border-color: #cce5ff;
+}
