@@ -54,6 +54,17 @@ class AccionMin extends ObjetoMin {
 	
 }
 
+@Accesors
+class ResultadoMin extends ObjetoMin{
+	List<Dato> datos: 
+	
+	new(String tipo, List<Dato> datos) {
+		super(0, tipo)
+		this.datos = datos
+	}
+	
+}
+
 
 
 

@@ -14,6 +14,10 @@ import ar.unq.edu.ciu.gatoEncerrado_xrest.tos.ElementoMin
 import dominioElementosDeljuego.Item
 import org.eclipse.xtend.lib.annotations.Accessors
 
+
+// repo biblioteca es un nombre muy feo, en el ejemplo de libros se llamaba Biblioteca porque era un ejemplo que manejaba libros
+// entonces el que maneja los libros es un objeto biblioteca
+// en tu caso si no tenemos una abstraccion 
 @Accessors
 class RepoBibliotecaJuego {
 
