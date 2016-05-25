@@ -1,5 +1,5 @@
 #letrasLogin {
-	color: white;
+	color: black;
 }
 
 #header {
@@ -62,8 +62,8 @@ img.center {
 
 #imagenLaberinto{
 		
-	width: 600px;
-    height: 350px;
+	width: 200px;
+    height: 100px;
     text-align: center;
 }
 

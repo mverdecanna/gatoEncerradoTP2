@@ -1,36 +1,57 @@
 'use strict';
-angular.module('gatoEncerradoApp', [ ])
+var gatoEncerradoApp = angular.module('gatoEncerradoApp', ['ngRoute']);
 
 
-/*//configure our routes
+//configure our routes
 gatoEncerradoApp.config(function($routeProvider) {
 $routeProvider
-
-    // route for the home page
+    /*.when('/', {
+        templateUrl : 'habitacion.html',
+        //controller  : 'mainController'
+    })*/
+    
     .when('/', {
-        templateUrl : 'pages/home.html',
-        controller  : 'mainController'
+        templateUrl : 'home.html',
+        //controller  : 'mainController'
     })
 
-    // route for the about page
     .when('/habitacion', {
-        templateUrl : 'pages/habitacion.html',
-        controller  : 'HabitacionesController'
+        templateUrl : 'habitacion.html',
+        //controller  : 'habitacionesController'
     })
-
-    // route for the contact page
-    .when('/contact', {
-        templateUrl : 'pages/contact.html',
-        controller  : 'contactController'
+    
+    .when('/laberinto', {
+        templateUrl : 'laberinto.html',
+        //controller  : 'laberintoController'
     });
-});*/
-
-
-gatoEncerradoApp.controller('LaberintosController',function($scope, LaberintoService){
-	$scope.laberintos = LaberintoService.getLaberintos();
 });
 
-gatoEncerradoApp.controller('HabitacionesController',function($scope, HabitacionService){
+/*gatoEncerradoApp.controller('controlerLaberintos',function($scope, LaberintosService){
+	$scope.laberintos = function() {
+		LaberintosService.query()
+	}*/
+	
+	
+	/*$scope.cambiarImagen = function(){
+		$scope.imagenPrincipal = $scope.imagenSeleccionable;
+	};
+})*/
+
+
+gatoEncerradoApp.controller('LaberintosController',function($scope){
+	$scope.imagenPrincipal = 'imagenes/gato_encerrado.jpg';
+	$scope.imagenSeleccionable = 'imagenes/casa-terror.jpg';
+	
+	$scope.cambiarImagen = function(){
+		$scope.imagenPrincipal = $scope.imagenSeleccionable;
+	};
+	
+	$scope.laberintos = function() {
+		LaberintosService.query()
+	}
+});
+
+/*gatoEncerradoApp.controller('HabitacionesController',function($scope, HabitacionService){
 	$scope.habitaciones = HabitacionService.getHabitaciones();
 });
 
@@ -41,7 +62,7 @@ gatoEncerradoApp.controller('aboutController', function($scope) {
 gatoEncerradoApp.controller('mainController', function($scope) {
     // create a message to display in our view
     $scope.message = 'Everyone come and see how good I look!';
-});
+});*/
 
 
 
