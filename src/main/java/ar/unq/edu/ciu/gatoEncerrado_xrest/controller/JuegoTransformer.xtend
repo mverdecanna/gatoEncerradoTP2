@@ -57,7 +57,7 @@ class JuegoTransformer {
 	def static ejecutarAccionYTraerRespuesta(ResultadoAccion resultado) {
 		//esta mal la respondasibilidad en el jugador
 		//actual laberinto, es un nombre muy JODA master...
-//		new ResultadoAccionMin(resultado.tipo, resultado.datos);
+		//new ResultadoAccionMin(resultado.tipo, resultado.datos);
 	
 	
 	}
