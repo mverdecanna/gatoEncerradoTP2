@@ -53,13 +53,11 @@ class JuegoTransformer {
 		return new AccionMin(acc.id, acc.nombreAccion)
 	}
 	
-	//aca es donde se nota que estas haciendo mas que solo transformar, deberia de llegarte un objeto ResultadoDeAccion y todo lo extra que necesites
-	def static ejecutarAccionYTraerRespuesta(ResultadoAccion resultado) {
-		//esta mal la respondasibilidad en el jugador
-		//actual laberinto, es un nombre muy JODA master...
-		//new ResultadoAccionMin(resultado.tipo, resultado.datos);
 	
 	
+	
+	def static toResultadoAccionTo(ResultadoAccion resultado) {
+		
 	}
 	
 }

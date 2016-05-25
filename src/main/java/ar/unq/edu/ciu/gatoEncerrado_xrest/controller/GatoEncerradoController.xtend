@@ -50,12 +50,13 @@ class GatoEncerradoController {
 		val idHab = Integer.valueOf(idhab)
 		val idAcc = Integer.valueOf(idacc)
 		val idUser = Integer.valueOf(iduser)
-//
-//		try {
-//			val jugador = RepoBibliotecaJuego.instance.repoUsuario.getUsuario(idUser)
-//			//la accion deberia de ejecutarse aca
-//			val valorADevolver = JuegoTransformer.ejecutarAccionYTraerRespuesta(jugador, idHab, idAcc)
-//			response.contentType = "application/json"
+
+		try {
+			val jugador = RepoBibliotecaJuego.instance.repoUsuario.getUsuario(idUser)
+			val accion = jugador.partidaJugando.accionesDePartida.get(idHab).get(idAcc)
+			val resultado= accion.ejecutar(jugador,jugador.partidaJugando.habitacionActual)
+	        val valorADevolver = JuegoTransformer.toResultadoAccionTo(resultado)
+			response.contentType = "application/json"
 
 
 // esta mal la respuesta, dependiendo de la accion es como s interpreta la respuesta....
@@ -77,9 +78,9 @@ class GatoEncerradoController {
  * 
  */
 			ok()
-//		} catch (UserException e) {
-//			notFound("No existe la accion en la habitacion ");
-//		}
+		} catch (UserException e) {
+			notFound("No existe la accion en la habitacion ");
+		}
 //
 	}
 
