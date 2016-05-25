@@ -22,26 +22,26 @@ class JuegoTransformer {
 	
 	
 	//el nombre deberia de ser toLaberintoTo
-	def static List<LaberintoMin> allLaberintosMin(List<Laberinto> laberintos, RepoImagenes img) {
+	def static List<LaberintoMin> toLaberintoTo(List<Laberinto> laberintos, RepoImagenes img) {
 		//la imagen puede ser un atributo del objeto laberinto
 		laberintos.map [lab| new LaberintoMin(lab.nombreLaberinto, img.getPath(lab.id), lab.id)]
 	}
 
 	//el nombre deberia de ser toLaberintoEnCursoTo
-	def static transformarALabMostrable( Laberinto laberinto, EstadoDeJuego juego) {
-		val inventarioMin = juego.inventario.map[item|transformarItemEnElementoMin(item)]
-		val habitacionesMin = laberinto.habitaciones.map[hab| transformarHabitacionAHabitacionMin(hab,juego)]
-		val habMostrar = transformarHabitacionAHabitacionMin(juego.habitacionActual, juego)
+	def static toLaberintoEnCursoTo( Laberinto laberinto, EstadoDeJuego juego) {
+		val inventarioMin = juego.inventario.map[item|ar.unq.edu.ciu.gatoEncerrado_xrest.controller.JuegoTransformer.toItemEnInventarioTo(item)]
+		val habitacionesMin = laberinto.habitaciones.map[hab| ar.unq.edu.ciu.gatoEncerrado_xrest.controller.JuegoTransformer.toHabitacionEnLaberintoTo(hab,juego)]
+		val habMostrar = ar.unq.edu.ciu.gatoEncerrado_xrest.controller.JuegoTransformer.toHabitacionEnLaberintoTo(juego.habitacionActual, juego)
 		return new LaberintoVista(laberinto.id, laberinto.nombreLaberinto, habitacionesMin, inventarioMin, habMostrar)
 	}
 
 	//el nombre deberia de ser toItemEnInventarioTo
-	def static transformarItemEnElementoMin(Item item) {
+	def static toItemEnInventarioTo(Item item) {
 		return new ElementoMin(item.id, item.nombre, item.descripcion)
 	}
 
 	//el nombre deberia de ser toHabitacionEnLaberintoTo
-	def static transformarHabitacionAHabitacionMin(Habitacion hab, EstadoDeJuego est){
+	def static toHabitacionEnLaberintoTo(Habitacion hab, EstadoDeJuego est){
 		var accionesMin = est.accionesPartidaDeHab(hab).map[acc| transformarAccionAAccionMin(acc)]	
 		return new HabitacionMin(hab.id, hab.nombreHabitacion, accionesMin)	
 	}
@@ -51,13 +51,13 @@ class JuegoTransformer {
 		return new AccionMin(acc.id, acc.nombreAccion)
 	}
 	
-	//aca es donde se nota que estas haciendo mas que solo transformar, deberia de llegarte un objeto ResultadoDeAccion y todo lo extra que necesites
-	def static ejecutarAccionYTraerRespuesta(ResultadoAccion resultado) {
-		//esta mal la respondasibilidad en el jugador
-		//actual laberinto, es un nombre muy JODA master...
-		new ResultadoAccionMin(reusltado.tipo, resultado.datos.map["{}"]);
-	
-	
-	}
+//	//aca es donde se nota que estas haciendo mas que solo transformar, deberia de llegarte un objeto ResultadoDeAccion y todo lo extra que necesites
+//	def static ejecutarAccionYTraerRespuesta(ResultadoAccion resultado) {
+//		//esta mal la respondasibilidad en el jugador
+//		//actual laberinto, es un nombre muy JODA master...
+////		new ResultadoAccionMin(reusltado.tipo, resultado.datos.map["{}"]);
+//	
+//	
+//	}
 	
 }

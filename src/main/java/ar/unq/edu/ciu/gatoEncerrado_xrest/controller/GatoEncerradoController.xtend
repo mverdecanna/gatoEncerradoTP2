@@ -21,7 +21,7 @@ class GatoEncerradoController {
 	def Result laberintos() {
 
 		// aca falta tener en cuenta que los laberintos tienen un estado que depende del usuario (si lo termino o no)
-		val laberintos = JuegoTransformer.allLaberintosMin(RepoBibliotecaJuego.instance.biblioteca.laberintos,
+		val laberintos = JuegoTransformer.toLaberintoTo(RepoBibliotecaJuego.instance.biblioteca.laberintos,
 			RepoBibliotecaJuego.instance.repoImagenes)
 		response.contentType = ContentType.APPLICATION_JSON;
 		ok(laberintos.toJson);
@@ -38,7 +38,7 @@ class GatoEncerradoController {
 			response.contentType = "application/json"
 			val laberinto = RepoBibliotecaJuego.instance.buscarLab(idLab)
 			val estadoLab = RepoBibliotecaJuego.instance.repoUsuario.getEstadoDeJuego(idUser, idLab)
-			ok(JuegoTransformer.transformarALabMostrable(laberinto, estadoLab).toJson)
+			ok(JuegoTransformer.toLaberintoEnCursoTo(laberinto, estadoLab).toJson)
 		} catch (UserException e) {
 			// aca lo ideal es que sea la excepcion la que tenga la info extra que necestitas, y en vez de que sea una generica, que sea una excepcion particular para tu dominio
 			notFound("No existe el laberinto con '" + idLab + "'");
@@ -50,12 +50,12 @@ class GatoEncerradoController {
 		val idHab = Integer.valueOf(idhab)
 		val idAcc = Integer.valueOf(idacc)
 		val idUser = Integer.valueOf(iduser)
-
-		try {
-			val jugador = RepoBibliotecaJuego.instance.repoUsuario.getUsuario(idUser)
-			//la accion deberia de ejecutarse aca
-			val valorADevolver = JuegoTransformer.ejecutarAccionYTraerRespuesta(jugador, idHab, idAcc)
-			response.contentType = "application/json"
+//
+//		try {
+//			val jugador = RepoBibliotecaJuego.instance.repoUsuario.getUsuario(idUser)
+//			//la accion deberia de ejecutarse aca
+//			val valorADevolver = JuegoTransformer.ejecutarAccionYTraerRespuesta(jugador, idHab, idAcc)
+//			response.contentType = "application/json"
 
 
 // esta mal la respuesta, dependiendo de la accion es como s interpreta la respuesta....
@@ -77,10 +77,10 @@ class GatoEncerradoController {
  * 
  */
 			ok()
-		} catch (UserException e) {
-			notFound("No existe la accion en la habitacion ");
-		}
-
+//		} catch (UserException e) {
+//			notFound("No existe la accion en la habitacion ");
+//		}
+//
 	}
 
 }
