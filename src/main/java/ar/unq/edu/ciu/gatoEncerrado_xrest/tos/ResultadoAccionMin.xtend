@@ -15,12 +15,12 @@ class ResultadoAccionMin extends ObjetoMin{
 	}
 	
 	
-//	new(TipoDeAccion tipo, List<Dato> datos){
-//		super(0,"resultado")
+	new(TipoDeAccion tipo, List<Dato> datos){
+		super(0,"resultado")
 //		this.tipo = toTipoDeAccionMin(tipo)
 //		this.datos = toDatosMin(datos);
 //		buildTipoDeAccion(tipo)
-//	}
+	}
 	
 	
 	def toDatosMin(List<Dato> datos) {
