@@ -2,6 +2,7 @@ package ar.unq.edu.ciu.gatoEncerrado_xrest.tos
 
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
+import dominioElementosDeljuego.Dato
 
 @Accessors
 class ObjetoMin {
@@ -54,9 +55,10 @@ class AccionMin extends ObjetoMin {
 	
 }
 
-@Accesors
+@Accessors
 class ResultadoMin extends ObjetoMin{
-	List<Dato> datos: 
+	
+	List<Dato> datos;
 	
 	new(String tipo, List<Dato> datos) {
 		super(0, tipo)

@@ -13,6 +13,8 @@ import dominioElementosDeljuego.Item
 import dominioElementosDeljuego.Jugador
 import dominioElementosDeljuego.Laberinto
 import java.util.List
+import dominioElementosDeljuego.ResultadoAccion
+import ar.unq.edu.ciu.gatoEncerrado_xrest.tos.ResultadoAccionMin
 
 // NO SE ENTIENDE BIEN LA RESPONSABILIDAD ACA, no es un controller, pero esta en el medio de todo al fin y al cabo lo que hace
 // son 2 cosas: hacer la accion del dominio y transformar a los tos, idealmente podriamos dejarle solo la responsabilidad
@@ -51,13 +53,13 @@ class JuegoTransformer {
 		return new AccionMin(acc.id, acc.nombreAccion)
 	}
 	
-//	//aca es donde se nota que estas haciendo mas que solo transformar, deberia de llegarte un objeto ResultadoDeAccion y todo lo extra que necesites
-//	def static ejecutarAccionYTraerRespuesta(ResultadoAccion resultado) {
-//		//esta mal la respondasibilidad en el jugador
-//		//actual laberinto, es un nombre muy JODA master...
-////		new ResultadoAccionMin(reusltado.tipo, resultado.datos.map["{}"]);
-//	
-//	
-//	}
+	//aca es donde se nota que estas haciendo mas que solo transformar, deberia de llegarte un objeto ResultadoDeAccion y todo lo extra que necesites
+	def static ejecutarAccionYTraerRespuesta(ResultadoAccion resultado) {
+		//esta mal la respondasibilidad en el jugador
+		//actual laberinto, es un nombre muy JODA master...
+//		new ResultadoAccionMin(resultado.tipo, resultado.datos);
+	
+	
+	}
 	
 }
