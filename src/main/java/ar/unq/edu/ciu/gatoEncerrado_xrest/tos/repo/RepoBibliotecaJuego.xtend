@@ -42,6 +42,16 @@ class RepoBibliotecaJuego {
 			agregarHabitacion("Torre Principal")
 			agregarHabitacion("Habitacion de la Reina")
 			])
+			agregarLaberinto(new Laberinto("Laberinto Oscuro") => [ 
+			agregarHabitacion("Patio")
+			agregarHabitacion("Entrada")
+			agregarHabitacion("Habitacion")
+			])
+			agregarLaberinto(new Laberinto("Laberinto Solidario") => [ 
+			agregarHabitacion("Cocina")
+			agregarHabitacion("Entrada")
+			agregarHabitacion("Sala")
+			])
 		]
 		repoImagenes = new RepoImagenes;
 		repoUsuario = new RepoUsuarios

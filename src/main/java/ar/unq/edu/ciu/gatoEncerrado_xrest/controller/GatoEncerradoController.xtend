@@ -14,7 +14,7 @@ class GatoEncerradoController {
 	extension JSONUtils = new JSONUtils
 
 	def static void main(String[] args) {
-		XTRest.start(GatoEncerradoController, 9000)
+		XTRest.start(GatoEncerradoController, 7000)
 	}
 
 	@Get("/laberintos")

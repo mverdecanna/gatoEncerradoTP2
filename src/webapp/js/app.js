@@ -1,5 +1,9 @@
 'use strict';
-var gatoEncerradoApp = angular.module('gatoEncerradoApp', ['ngRoute']);
+var gatoEncerradoApp = angular.module('gatoEncerradoApp', [
+  'ngRoute',
+  'ngResource',
+  'LaberintosServiceModule'
+]);
 
 
 //configure our routes
@@ -22,7 +26,7 @@ $routeProvider
     
     .when('/laberinto', {
         templateUrl : 'laberinto.html',
-        //controller  : 'laberintoController'
+        controller  : 'laberintosController'
     });
 });
 
@@ -38,18 +42,19 @@ $routeProvider
 })*/
 
 
-gatoEncerradoApp.controller('LaberintosController',function($scope){
+gatoEncerradoApp.controller('laberintosController', ['$scope', '$location', 'LaberintosService',
+  function($scope, $location, LaberintosService){
 	$scope.imagenPrincipal = 'imagenes/gato_encerrado.jpg';
 	$scope.imagenSeleccionable = 'imagenes/casa-terror.jpg';
 	
 	$scope.cambiarImagen = function(){
-		$scope.imagenPrincipal = $scope.imagenSeleccionable;
+		//$scope.imagenPrincipal = $scope.imagenSeleccionable;
+		$location.path('/laberinto');
+		
 	};
 	
-	$scope.laberintos = function() {
-		LaberintosService.query()
-	}
-});
+	$scope.laberintos = LaberintosService.query()
+}]);
 
 /*gatoEncerradoApp.controller('HabitacionesController',function($scope, HabitacionService){
 	$scope.habitaciones = HabitacionService.getHabitaciones();

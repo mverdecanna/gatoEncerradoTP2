@@ -1,11 +1,16 @@
-app.factory('LaberintosService', function($resource) {
-    return $resource('/laberintos/:id', {'id': '@id'}, {
+
+'use strict';
+var ServicesModule = angular.module('LaberintosServiceModule', []);
+
+
+ServicesModule.factory('LaberintosService', ['$resource',  function($resource) {
+    return $resource('//localhost:7000/laberintos/:id', {'id': '@id'}, {
     	'query': { method: 'GET', isArray: true},
-        /*'update': { method: 'PUT' },
+        'update': { method: 'PUT' },
         'save': { method: 'POST' },
-        'remove': { method:'DELETE' }*/
+        'remove': { method:'DELETE' }
     });
-});
+}]);
 	
 
 
