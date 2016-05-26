@@ -36,6 +36,8 @@ class RepoBibliotecaJuego {
 	}
 	
 	new(){
+		
+// CODIGO DE TESTING		
 		biblioteca = new BibliotecaDeJuego() => [
 			agregarLaberinto(new Laberinto("Mansion de la Muerte") => [ 
 			agregarHabitacion("Hall de entrada")
@@ -55,6 +57,10 @@ class RepoBibliotecaJuego {
 		]
 		repoImagenes = new RepoImagenes;
 		repoUsuario = new RepoUsuarios
+// Ubicacion de imagenes arbitraria	
+		repoImagenes.agregarImagen(biblioteca.laberintos.get(0).id,"imagenes/casa-terror.jpg")
+		repoImagenes.agregarImagen(biblioteca.laberintos.get(1).id,"imagenes/laberinto1.jpg")
+	
 	}
 	
 	

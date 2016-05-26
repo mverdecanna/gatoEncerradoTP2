@@ -10,13 +10,19 @@ class RepoImagenes {
 
 	new (){
 		paths = new HashMap;
-		paths.put(1, "zaraza");	
+		
 	}
 
-	
+	def agregarImagen(Integer id,String path){
+		
+		paths.put(id,path)
+	}
 	def String getPath(int id) {
-		//return this.paths.get(id);
-		return "zaraza"; 
+	if(paths.containsKey(id))	
+		{return this.paths.get(id);}
+	else 
+		{ return "no hay imagen"}	
+		 
 	}
 
 /**
