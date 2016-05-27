@@ -24,7 +24,6 @@ class GatoEncerradoController {
 		val laberintos = JuegoTransformer.toLaberintoTo(RepoBibliotecaJuego.instance.biblioteca.laberintos,
 			RepoBibliotecaJuego.instance.repoImagenes)
 		response.contentType = ContentType.APPLICATION_JSON;
-		println(laberintos)
 		ok(laberintos.toJson);
 	}
 
