@@ -11,6 +11,15 @@ ServicesModule.factory('LaberintosService', ['$resource',  function($resource) {
         'remove': { method:'DELETE' }
     });
 }]);
+
+/*ServicesModule.factory('LaberintosService', ['$resource',  function($resource) {
+    return $resource('//localhost:7000/laberintos/:id', {'id': '@id'}, {
+    	'query': { method: 'GET', isArray: true},
+        'update': { method: 'PUT' },
+        'save': { method: 'POST' },
+        'remove': { method:'DELETE' }
+    });
+}]);*/
 	
 
 

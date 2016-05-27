@@ -1,0 +1,16 @@
+
+  <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/gatoEncerrado.css"/>
+
+    <div id="borderHabitacion" class="col-md-7" ng-controller="laberintosController">
+    	
+    	<h3 style="text-align:center">nombreLaberintoActual </h3>
+    	<a ng-src="{{laberintoSeleccionado.pathImage}}" alt=""></a>
+    	{{laberintoSeleccionado.nombreLaberinto}}
+    	
+    	<!-- <img id="imagenLaberinto" class="img-responsive" src="imagenes/casa-terror.jpg" alt="" ></a> -->
+    	<button type="button" class="btn btn-success" ng-click="mostrarLaberinto()">Jugar</button>
+
+    </div>

@@ -27,7 +27,12 @@ $routeProvider
     .when('/laberinto', {
         templateUrl : 'laberinto.html',
         controller  : 'laberintosController'
-    });
+    })
+	
+	.when('/laberinto/:id' ,{
+		templateUrl : 'laberinto.html',
+        controller  : 'laberintosController'
+	});
 });
 
 /*gatoEncerradoApp.controller('controlerLaberintos',function($scope, LaberintosService){
@@ -42,16 +47,28 @@ $routeProvider
 })*/
 
 
-gatoEncerradoApp.controller('laberintosController', ['$scope', '$location', 'LaberintosService',
-  function($scope, $location, LaberintosService){
+gatoEncerradoApp.controller('laberintosController', ['$scope', '$routeParams', '$location', 'LaberintosService', 
+  function($scope, $routeParams, $location, LaberintosService){
 	$scope.imagenPrincipal = 'imagenes/gato_encerrado.jpg';
 	$scope.imagenSeleccionable = 'imagenes/casa-terror.jpg';
+	$scope.laberintoSeleccionado = null;
 	
-	$scope.cambiarImagen = function(){
+	
+	$scope.verDetalle = function(laberinto){
 		//$scope.imagenPrincipal = $scope.imagenSeleccionable;
 		$location.path('/laberinto');
+		$location.url('/laberinto/' + laberinto.id);
+		$scope.laberintoSeleccionado = laberinto;
 		
 	};
+	
+	$scope.mostrarLaberinto = function() {
+		$location.path('/habitacion');
+	}
+	
+	/*$scope.laberintoSeleccionado = LaberintoService.getLaberinto()*/
+	
+	
 	
 	$scope.laberintos = LaberintosService.query()
 }]);
