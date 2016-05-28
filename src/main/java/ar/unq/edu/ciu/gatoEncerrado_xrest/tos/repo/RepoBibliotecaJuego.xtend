@@ -61,7 +61,7 @@ class RepoBibliotecaJuego {
 		repoImagenes.agregarImagen(biblioteca.laberintos.get(0).id,"imagenes/casa-terror.jpg")
 		repoImagenes.agregarImagen(biblioteca.laberintos.get(1).id,"imagenes/laberinto1.jpg")
 //27-05 Codigo de Prueba Horrible ,mejorarlo en la tarde		
-		val usuario1= new Jugador()
+		val usuario1= new Jugador("NANANANABATMAN")
 		usuario1.inicializarPartida(biblioteca.laberintos.get(0))
 		usuario1.inicializarPartida(biblioteca.laberintos.get(1))
 		repoUsuario.agregarUsuario(usuario1)
