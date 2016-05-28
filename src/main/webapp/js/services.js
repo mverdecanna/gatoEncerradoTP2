@@ -12,14 +12,17 @@ ServicesModule.factory('LaberintosService', ['$resource',  function($resource) {
     });
 }]);
 
-/*ServicesModule.factory('LaberintosService', ['$resource',  function($resource) {
-    return $resource('//localhost:7000/laberintos/:id', {'id': '@id'}, {
-    	'query': { method: 'GET', isArray: true},
-        'update': { method: 'PUT' },
+
+
+
+ServicesModule.factory('LaberintoService', ['$resource',  function($resource) {
+    return $resource('//localhost:7000/laberintos/:id/:id2', {'id': '@id' , 'id2': '@id2'}, {
+    	'getLaberinto': { method: 'GET', isArray: true},
+    	'update': { method: 'PUT' },
         'save': { method: 'POST' },
         'remove': { method:'DELETE' }
     });
-}]);*/
+}]);
 	
 
 
