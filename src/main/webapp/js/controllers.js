@@ -1,6 +1,7 @@
+/*
 angular.module('gatoEncerradoApp')
 	.controller('LaberintosController',function($scope, LaberintoService){
-	$scope.laberintos = LaberintoService.getLaberintos();
+	$scope.laberintos  = LaberintoService.getLaberintos();
 });
 //
 //
@@ -25,4 +26,13 @@ angular.module('gatoEncerradoApp')
 //            templateUrl : 'pages/contact.html',
 //            controller  : 'contactController'
 //        });
-//});
+//});*/
+/*
+	/*
+		/*
+			/*
+				
+			*/
+		*/
+	*/
+*/

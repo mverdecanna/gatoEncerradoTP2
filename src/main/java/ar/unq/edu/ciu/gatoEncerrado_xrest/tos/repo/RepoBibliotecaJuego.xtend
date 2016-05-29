@@ -14,6 +14,7 @@ import ar.unq.edu.ciu.gatoEncerrado_xrest.tos.ElementoMin
 import dominioElementosDeljuego.Item
 import org.eclipse.xtend.lib.annotations.Accessors
 import dominioElementosDeljuego.Jugador
+import dominioElementosDeljuego.AccionIrAOtraHabitacion
 
 // repo biblioteca es un nombre muy feo, en el ejemplo de libros se llamaba Biblioteca porque era un ejemplo que manejaba libros
 // entonces el que maneja los libros es un objeto biblioteca
@@ -55,6 +56,7 @@ class RepoBibliotecaJuego {
 			agregarHabitacion("Sala")
 			])
 		]
+		
 		repoImagenes = new RepoImagenes;
 		repoUsuario = new RepoUsuarios
 // Ubicacion de imagenes arbitraria	
@@ -62,11 +64,15 @@ class RepoBibliotecaJuego {
 		repoImagenes.agregarImagen(biblioteca.laberintos.get(1).id,"imagenes/laberinto1.jpg")
 //27-05 Codigo de Prueba Horrible ,mejorarlo en la tarde		
 		val usuario1= new Jugador("NANANANABATMAN")
+//		usuario1.inicializarPartida(biblioteca.laberintos.get(1))
+		biblioteca.laberintos.get(0).habitaciones.get(0).agregarAccion(new AccionIrAOtraHabitacion (biblioteca.laberintos.get(0).habitaciones.get(1)))
+		biblioteca.laberintos.get(0).habitaciones.get(0).esHabitacionInicial
 		usuario1.inicializarPartida(biblioteca.laberintos.get(0))
-		usuario1.inicializarPartida(biblioteca.laberintos.get(1))
 		repoUsuario.agregarUsuario(usuario1)
 		println("ID de usuario de prueba   " + usuario1.id)
 		println("ID de Laberinto de prueba  " + biblioteca.laberintos.get(0).id)
+		println(usuario1.traerPartidaActual)
+		println(usuario1.partidas)
 	}
 	
 	

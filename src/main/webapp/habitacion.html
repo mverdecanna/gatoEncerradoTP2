@@ -1,4 +1,5 @@
 
+
   <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -7,22 +8,19 @@
 
     <h3 style="text-align:center">nombreLaberintoActual</h3>
 
-    <div class="col-md-7" ng-controller="laberintoController">
+    <div   class="col-md-7">
     		<!-- 3 paneles.. habitacionActual, accionesDeLaHabitacion, inventarioJugador -->
-    <div id= "borderHabitacion" class="col-md-8">
-    	<div class="col-md-8">
-
-        {{laberinto.nombreLaberinto}}
+    	<div id= "borderHabitacion"  class="col-md-8">
+    	<div class="col-md-8">{{habitacionActual.nombre}}
         <ul class="list-unstyled">
             <li ng-repeat= "habitacion in habitaciones">
               {{habitacion.nombre}}
             </li>
         </ul>
-
-
-
+    		{{10+4}}
+			{{habitacionActual.nombre}}
    			<p>habitacionActual</p>
-        
+        {{7*8}}
    			<!-- aca va la imagen de la habitacionActual -->
 	    	<img class="img-responsive" src="" alt="">
    		</div>

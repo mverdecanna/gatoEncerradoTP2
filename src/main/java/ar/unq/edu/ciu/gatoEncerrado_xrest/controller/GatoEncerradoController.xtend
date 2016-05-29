@@ -27,7 +27,7 @@ class GatoEncerradoController {
 		ok(laberintos.toJson);
 	}
 
-	@Get("/laberinto/:iduser :idlab")
+	@Get("/laberinto/:iduser/:idlab")
 	// NOTA 22-05:NO TUVIMOS EN CUENTA EL REPO DE IMAGENES ACA,REVISAR
 	def Result laberinto() {
 
@@ -37,14 +37,31 @@ class GatoEncerradoController {
 		try {
 			response.contentType = "application/json"
 			val laberinto = RepoBibliotecaJuego.instance.buscarLab(idLab)
-			val estadoLab = RepoBibliotecaJuego.instance.repoUsuario.getEstadoDeJuego(idUser, idLab)
+			val estadoLab = RepoBibliotecaJuego.instance.repoUsuario.getUsuario(idUser).partidaJugando
 			ok(JuegoTransformer.toLaberintoEnCursoTo(laberinto, estadoLab).toJson)
 		} catch (UserException e) {
 			// aca lo ideal es que sea la excepcion la que tenga la info extra que necestitas, y en vez de que sea una generica, que sea una excepcion particular para tu dominio
 			notFound("No existe el laberinto con '" + idLab + "'");
 		}
 	}
-
+	
+	@Get("/laberinto/:iduser")
+	def Result laberintoo(){
+		val idUser=Integer.valueOf(iduser)
+		
+		try {
+			response.contentType = "application/json"
+			val est = RepoBibliotecaJuego.instance.repoUsuario.getUsuario(idUser).partidaJugando
+			val habitacion = RepoBibliotecaJuego.instance.repoUsuario.getUsuario(idUser).partidaJugando.habitacionActual
+			ok(JuegoTransformer.toHabitacionEnLaberintoTo(habitacion,est).toJson)
+			}
+		catch(UserException e) {
+			// aca lo ideal es que sea la excepcion la que tenga la info extra que necestitas, y en vez de que sea una generica, que sea una excepcion particular para tu dominio
+			notFound("No existe el laberinto con '" +  "'");
+		}
+		
+	}
+		
 	@Get("/hacerAccion/:idhab :idacc :iduser")
 	def Result hacerAccion() {
 		val idHab = Integer.valueOf(idhab)
