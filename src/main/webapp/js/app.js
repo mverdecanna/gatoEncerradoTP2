@@ -62,19 +62,18 @@ gatoEncerradoApp.controller('laberintosController', ['$scope', '$routeParams', '
 		$location.path('/laberinto');
 		$location.url('/laberinto/' + laberinto.id );
 		$scope.laberintoSeleccionado=laberinto; 
-		$scope.habitacionA;
+		$scope.habitacionActual= null;
 	};
 	
 	$scope.mostrarLaberinto = function() {
-		//$location.path('/habitacion');
-		$http.get("/laberinto/1756975314/2082372017").success(function(data){
-			
-			$scope.habitaciones = data.habitacionesMin;
-			$scope.habitacionActual = data.habitacionMostrar;
-			$scope.inventarioActual = data.inventarioMin;
-			console.log($scope.habitacionActual);
-			console.log($scope.inventarioActual);
-			console.log($scope.habitaciones);
+		$location.path('/habitacion');
+		$http.get("/laberinto/1/1334337949").success(function(data){
+		$scope.habitaciones = data.habitacionesMin;
+		$scope.habitacionActual = data.habitacionMostrar;
+		$scope.inventarioActual = data.inventarioMin;
+		console.log($scope.habitacionActual);
+		console.log($scope.inventarioActual);
+		console.log($scope.habitaciones);
 		}).error(errorHandler);
 			
 	};
