@@ -28,12 +28,12 @@ $routeProvider
     
     .when('/laberinto', {
         templateUrl : 'laberinto.html',
-        controller  : 'laberintosController'
+        controller  : 'vistaLaberintoController'
     })
 	
 	.when('/laberinto/:id' ,{
 		templateUrl : 'laberinto.html',
-        controller  : 'laberintosController'
+        controller  : 'vistaLaberintoController'
 	});
 });
 
@@ -56,7 +56,7 @@ gatoEncerradoApp.controller('laberintosController', ['$scope', '$routeParams', '
 	$scope.imagenPrincipal = 'imagenes/gato_encerrado.jpg';
 	$scope.imagenSeleccionable = 'imagenes/casa-terror.jpg';
 	$scope.laberintos = LaberintosService.query();
-	$scope.habActual=null ;
+	$scope.lab=null ;
 	
 	
 	$scope.verDetalle = function(laberinto){
@@ -64,7 +64,7 @@ gatoEncerradoApp.controller('laberintosController', ['$scope', '$routeParams', '
 		$location.path('/laberinto');
 		$location.url('/laberinto/'+ laberinto.id );
 		laberintoSeleccionado = laberinto;
- 	
+		$scope.lab=laberinto;
 	};
 	
 	$scope.irAHabitacion=function(){
@@ -104,45 +104,39 @@ function errorHandler(error) {
     };
 
 }]);
-
-	
-	
-	
-	
-	
-
-/*
-gatoEncerradoApp.controller('laberintoController', ['$scope', '$routeParams', '$location', 'LaberintoService','$http','$timeout', 
+gatoEncerradoApp.controller('vistaLaberintoController', ['$scope', '$routeParams', '$location', 'LaberintoService','$http','$timeout', 
           function($scope, $routeParams, $location, LaberintoService,$http,$timeout){
+			
+			$scope.labActual = laberintoSeleccionado;
+			console.log($scope.labActual)
 	
 	
-	
-	//$scope.habitaciones = laberinto.habitacionesMin();
-	
-	
-	
+	/*
 	$scope.verDetalle = function(laberinto){
-		//$scope.imagenPrincipal = $scope.imagenSeleccionable;
-		$location.path('/laberinto');
-		$location.url('/laberinto/' + laberinto.id + "/" + "1754736431");
-		$scope.laberintoSeleccionado = laberinto;
-		
-	};
+			//$scope.imagenPrincipal = $scope.imagenSeleccionable;
+			$location.path('/laberinto');
+			$location.url('/laberinto/' + laberinto.id + "/" + "1754736431");
+			$scope.laberintoSeleccionado = laberinto;
+			
+		};*/
 	
 	
+	
+	/*
 	$scope.mostrarLaberinto = function() {
-		$location.path('/habitacion');
-		$http.get("/laberinto/1756975314/2082372017").success(function(data){
-			
-			$scope.habitaciones = data.habitacionesMin;
-			$scope.habitacionActual = data.habitacionMostrar;
-			$scope.inventarioActual = data.inventarioMin;
-			console.log($scope.habitacionActual);
-			console.log($scope.inventarioActual);
-			console.log($scope.habitaciones);
-		}).error(errorHandler);
-			
-	};
+			$location.path('/habitacion');
+			$http.get("/laberinto/1756975314/2082372017").success(function(data){
+				
+				$scope.habitaciones = data.habitacionesMin;
+				$scope.habitacionActual = data.habitacionMostrar;
+				$scope.inventarioActual = data.inventarioMin;
+				console.log($scope.habitacionActual);
+				console.log($scope.inventarioActual);
+				console.log($scope.habitaciones);
+			}).error(errorHandler);
+				
+		};*/
+	
 	
 function errorHandler(error) {
         $scope.notificarError(error.data);
@@ -167,7 +161,7 @@ function errorHandler(error) {
     };
 
 }]);
-*/
+
 
 /*gatoEncerradoApp.controller('HabitacionesController',function($scope, HabitacionService){
 	$scope.habitaciones = HabitacionService.getHabitaciones();
