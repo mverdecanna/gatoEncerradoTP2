@@ -5,6 +5,7 @@ var gatoEncerradoApp = angular.module('gatoEncerradoApp', [
   'LaberintosServiceModule'
 ]);
 
+var laberintoSeleccionado= null;
 
 //configure our routes
 
@@ -54,26 +55,28 @@ gatoEncerradoApp.controller('laberintosController', ['$scope', '$routeParams', '
   function($scope, $routeParams, $location, LaberintosService,$http,$timeout){
 	$scope.imagenPrincipal = 'imagenes/gato_encerrado.jpg';
 	$scope.imagenSeleccionable = 'imagenes/casa-terror.jpg';
-	$scope.laberintoSeleccionado = null;
 	$scope.laberintos = LaberintosService.query();
+	$scope.habActual=null ;
+	
 	
 	$scope.verDetalle = function(laberinto){
 		//$scope.imagenPrincipal = $scope.imagenSeleccionable;
 		$location.path('/laberinto');
-		$location.url('/laberinto/' + laberinto.id );
-		$scope.laberintoSeleccionado=laberinto; 
-		$scope.habitacionActual= null;
+		$location.url('/laberinto/'+ laberinto.id );
+		laberintoSeleccionado = laberinto;
+ 	
 	};
 	
-	$scope.mostrarLaberinto = function() {
+	$scope.irAHabitacion=function(){
 		$location.path('/habitacion');
-		$http.get("/laberinto/1/1334337949").success(function(data){
+	};
+	$scope.mostrarLaberinto = function() {
+		console.log(laberintoSeleccionado.id);
+		$http.get("/laberinto/1/" + laberintoSeleccionado.id).success(function(data){
 		$scope.habitaciones = data.habitacionesMin;
 		$scope.habitacionActual = data.habitacionMostrar;
 		$scope.inventarioActual = data.inventarioMin;
-		console.log($scope.habitacionActual);
-		console.log($scope.inventarioActual);
-		console.log($scope.habitaciones);
+		console.log(laberintoSeleccionado.id);
 		}).error(errorHandler);
 			
 	};

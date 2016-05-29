@@ -37,7 +37,7 @@ class GatoEncerradoController {
 		try {
 			response.contentType = "application/json"
 			val laberinto = RepoBibliotecaJuego.instance.buscarLab(idLab)
-			val estadoLab = RepoBibliotecaJuego.instance.repoUsuario.getUsuario(idUser).partidaJugando
+			val estadoLab = RepoBibliotecaJuego.instance.repoUsuario.getUsuario(idUser).inicializarPartida(laberinto)
 			ok(JuegoTransformer.toLaberintoEnCursoTo(laberinto, estadoLab).toJson)
 		} catch (UserException e) {
 			// aca lo ideal es que sea la excepcion la que tenga la info extra que necestitas, y en vez de que sea una generica, que sea una excepcion particular para tu dominio
