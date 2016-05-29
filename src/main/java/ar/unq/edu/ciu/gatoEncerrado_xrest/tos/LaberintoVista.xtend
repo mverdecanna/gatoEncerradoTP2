@@ -35,12 +35,13 @@ class ElementoMin extends ObjetoMin {
 
 @Accessors
 class HabitacionMin extends ObjetoMin{
-	
+	String pathImage;
 	List<AccionMin> acciones
 	
-	new(Integer id, String nombre, List<AccionMin> acc) {
+	new(Integer id, String nombre, List<AccionMin> acc,String path) {
 		super(id, nombre)
 		this.acciones = acc
+		this.pathImage=path
 	}
 	
 }

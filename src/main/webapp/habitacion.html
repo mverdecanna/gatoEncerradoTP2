@@ -12,6 +12,9 @@
     		<!-- 3 paneles.. habitacionActual, accionesDeLaHabitacion, inventarioJugador -->
     	<div id= "borderHabitacion"  class="col-md-8">
     	<div class="col-md-8">{{habitacionActual.nombre}}
+    		<a href="#laberinto"></a> <img id="imagenLaberinto" class="img-responsive grow"
+									ng-src="{{laberinto.pathImage}}" alt=""></a>
+							</div>
         <ul class="list-unstyled">
             <li ng-repeat= "habitacion in habitaciones">
               {{habitacion.nombre}}

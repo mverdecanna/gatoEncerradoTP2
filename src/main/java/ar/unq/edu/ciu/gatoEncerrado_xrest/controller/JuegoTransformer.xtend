@@ -30,10 +30,10 @@ class JuegoTransformer {
 	}
 
 	//el nombre deberia de ser toLaberintoEnCursoTo
-	def static toLaberintoEnCursoTo( Laberinto laberinto, EstadoDeJuego juego) {
+	def static toLaberintoEnCursoTo( Laberinto laberinto, EstadoDeJuego juego,RepoImagenes img) {
 		val inventarioMin = juego.inventario.map[item|ar.unq.edu.ciu.gatoEncerrado_xrest.controller.JuegoTransformer.toItemEnInventarioTo(item)]
-		val habitacionesMin = laberinto.habitaciones.map[hab| ar.unq.edu.ciu.gatoEncerrado_xrest.controller.JuegoTransformer.toHabitacionEnLaberintoTo(hab,juego)]
-		val habMostrar = ar.unq.edu.ciu.gatoEncerrado_xrest.controller.JuegoTransformer.toHabitacionEnLaberintoTo(juego.habitacionActual, juego)
+		val habitacionesMin = laberinto.habitaciones.map[hab| ar.unq.edu.ciu.gatoEncerrado_xrest.controller.JuegoTransformer.toHabitacionEnLaberintoTo(hab,juego,img)]
+		val habMostrar = ar.unq.edu.ciu.gatoEncerrado_xrest.controller.JuegoTransformer.toHabitacionEnLaberintoTo(juego.habitacionActual, juego,img)
 		return new LaberintoVista(laberinto.id, laberinto.nombreLaberinto, habitacionesMin, inventarioMin, habMostrar)
 	}
 
@@ -43,9 +43,10 @@ class JuegoTransformer {
 	}
 
 	//el nombre deberia de ser toHabitacionEnLaberintoTo
-	def static toHabitacionEnLaberintoTo(Habitacion hab, EstadoDeJuego est){
-		var accionesMin = est.accionesPartidaDeHab(hab).map[acc| transformarAccionAAccionMin(acc)]	
-		return new HabitacionMin(hab.id, hab.nombreHabitacion, accionesMin)	
+	def static toHabitacionEnLaberintoTo(Habitacion hab, EstadoDeJuego est,RepoImagenes img){
+		var accionesMin = est.accionesPartidaDeHab(hab).map[acc| transformarAccionAAccionMin(acc)]
+			
+		return new HabitacionMin(hab.id, hab.nombreHabitacion, accionesMin,img.getPath(hab.id))	
 	}
 	
 	
