@@ -60,12 +60,28 @@ gatoEncerradoApp.controller('laberintosController', ['$scope', '$routeParams', '
 	$scope.lab=null ;
 	
 	
-	$scope.verDetalle = function(laberinto){
+	/*$scope.verDetalle = function(laberinto){
 		//$scope.imagenPrincipal = $scope.imagenSeleccionable;
 		$location.path('/laberinto');
 		$location.url('/laberinto/'+ laberinto.id );
 		laberintoSeleccionado = laberinto;
 		$scope.lab=laberinto;
+	};*/
+	
+	$scope.verDetalle = function(laberinto){
+		if(laberintoSeleccionado != null){
+			if(confirm("Estas seguro de cambiar de Laberinto?")){
+				$location.path('/laberinto');
+				$location.url('/laberinto/'+ laberinto.id );
+				laberintoSeleccionado = laberinto;
+				$scope.lab=laberinto;
+			}
+		}else{
+			$location.path('/laberinto');
+			$location.url('/laberinto/'+ laberinto.id );
+			laberintoSeleccionado = laberinto;
+			$scope.lab=laberinto;
+		}	
 	};
 	
 	/*
