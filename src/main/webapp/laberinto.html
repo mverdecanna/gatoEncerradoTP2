@@ -8,12 +8,10 @@
 
     <div id="borderHabitacion" class="col-md-7">
     	
-    	<h3 style="text-align:center">nombreLaberintoActual </h3>
-    	<a ng-src="{{laberintoSeleccionado.pathImage}}" alt=""></a>
-    	{{labActual.id}}
-    	{{labActual.nombreLaberinto}}
-
-		charlie    	    	
+    	<h3 style="text-align:center">{{labActual.nombreLaberinto}} </h3>
+    	<img class="img-responsive" ng-src="{{labActual.pathImage}}" alt="">
+    	
+    
     	<!-- <img id="imagenLaberinto" class="img-responsive" src="imagenes/casa-terror.jpg" alt="" ></a> -->
     	<button type="button" class="btn btn-success" ng-click="irAHabitacion()">Jugar</button>
 
