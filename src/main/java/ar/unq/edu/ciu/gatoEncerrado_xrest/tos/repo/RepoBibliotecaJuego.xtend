@@ -112,8 +112,8 @@ class RepoBibliotecaJuego {
 		
 		
 		//Inicializacion de partidas
-		//usuario1.inicializarPartida(biblioteca.laberintos.get(0))
-		//usuario1.inicializarPartida(biblioteca.laberintos.get(1))
+		usuario1.inicializarPartida(biblioteca.laberintos.get(0))
+		usuario1.inicializarPartida(biblioteca.laberintos.get(1))
 		repoUsuario.agregarUsuario(usuario1)
 		
 		

@@ -17,14 +17,17 @@ class ResultadoAccionMin extends ObjetoMin{
 	
 	new(TipoDeAccion tipo, List<Dato> datos){
 		super(0,"resultado")
+		this.tipo=tipo
+		this.datos=datos
+	
 //		this.tipo = toTipoDeAccionMin(tipo)
 //		this.datos = toDatosMin(datos);
 //		buildTipoDeAccion(tipo)
 	}
 	
-	
+
 	def toDatosMin(List<Dato> datos) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		
 	}
 	
 	def toTipoDeAccionMin(TipoDeAccion accion) {

@@ -59,6 +59,7 @@ class JuegoTransformer {
 	
 	def static toResultadoAccionTo(ResultadoAccion resultado) {
 		
+		return new ResultadoAccionMin(resultado.tipo,resultado.datos)
 	}
 	
 }

@@ -26,8 +26,11 @@
    		<div id="borderAcciones" class="col-md-4">
    			<p>Acciones</p>
    			<ul class="list-unstyled">
-                <li ng-repeat="item in habitacionActual.acciones">  
-                 	{{item.nombre}} 
+                <li ng-repeat="accion in habitacionActual.acciones">  
+                 	{{accion.nombre}}
+             <button type="button" ng-click="ejecutarAccion(accion.id,habitacionActual.id)" class="btn btn-primary"> Usar</button>
+              	
+              	
               	</li>
             </ul>
    		</div>

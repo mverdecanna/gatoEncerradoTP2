@@ -200,6 +200,15 @@ gatoEncerradoApp.controller('habitacionController', ['$scope', '$routeParams', '
 		$scope.habitacionActual = habitacionActual;
 		$scope.inventarioActual = inventarioActual;
 		
+	$scope.ejecutarAccion= function(idAcc,idHab){
+		$http.get("/hacerAccion/"+ idHab + "/"+ idAcc+ "/1").success(function(data){
+		$scope.resultado = data;	
+		console.log($scope.resultado);
+		}).error(errorHandler);
+			
+	};
+	
+	
 	function errorHandler(error) {
         $scope.notificarError(error.data);
     };

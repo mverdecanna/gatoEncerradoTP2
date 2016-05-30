@@ -62,16 +62,24 @@ class GatoEncerradoController {
 		
 	}
 		
-	@Get("/hacerAccion/:idhab :idacc :iduser")
+	@Get("/hacerAccion/:idhab/:idacc/:iduser")
 	def Result hacerAccion() {
 		val idHab = Integer.valueOf(idhab)
 		val idAcc = Integer.valueOf(idacc)
 		val idUser = Integer.valueOf(iduser)
 
 		try {
+			println(idAcc)
+			println(idHab)
 			val jugador = RepoBibliotecaJuego.instance.repoUsuario.getUsuario(idUser)
-			val accion = jugador.partidaJugando.accionesDePartida.get(idHab).get(idAcc)
-			val resultado= accion.ejecutar(jugador,jugador.partidaJugando.habitacionActual)
+			println(jugador)
+			println(jugador.partidaJugando)
+			val accion = jugador.partidaJugando.accionesDePartida.get(idHab)
+			println(accion)
+			val accion2= accion.findFirst[acc| acc.id == idAcc]
+			println(accion2)
+			val resultado= accion2.ejecutar(jugador,jugador.partidaJugando.habitacionActual)
+			println(resultado)
 	        val valorADevolver = JuegoTransformer.toResultadoAccionTo(resultado)
 			response.contentType = "application/json"
 
@@ -94,7 +102,7 @@ class GatoEncerradoController {
  * 
  * 
  */
-			ok()
+			ok(valorADevolver.toJson)
 		} catch (UserException e) {
 			notFound("No existe la accion en la habitacion ");
 		}
