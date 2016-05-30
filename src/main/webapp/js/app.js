@@ -6,7 +6,8 @@ var gatoEncerradoApp = angular.module('gatoEncerradoApp', [
 ]);
 
 var laberintoSeleccionado= null;
-
+var inventarioActual= null;
+var habitacionActual= null;
 //configure our routes
 
 gatoEncerradoApp.config(function($routeProvider) {
@@ -23,7 +24,7 @@ $routeProvider
 
     .when('/habitacion', {
         templateUrl : 'habitacion.html',
-        controller  : 'laberintosController'
+        controller  : 'habitacionController'
     })
     
     .when('/laberinto', {
@@ -67,19 +68,23 @@ gatoEncerradoApp.controller('laberintosController', ['$scope', '$routeParams', '
 		$scope.lab=laberinto;
 	};
 	
+	/*
 	$scope.irAHabitacion=function(){
-		$location.path('/habitacion');
-	};
+			$location.path('/habitacion');
+		};*/
+	
+	/*
 	$scope.mostrarLaberinto = function() {
-		console.log(laberintoSeleccionado.id);
-		$http.get("/laberinto/1/" + laberintoSeleccionado.id).success(function(data){
-		$scope.habitaciones = data.habitacionesMin;
-		$scope.habitacionActual = data.habitacionMostrar;
-		$scope.inventarioActual = data.inventarioMin;
-		console.log(laberintoSeleccionado.id);
-		}).error(errorHandler);
-			
-	};
+			console.log(laberintoSeleccionado.id);
+			$http.get("/laberinto/1/" + laberintoSeleccionado.id).success(function(data){
+			$scope.habitaciones = data.habitacionesMin;
+			$scope.habitacionActual = data.habitacionMostrar;
+			$scope.inventarioActual = data.inventarioMin;
+			console.log(laberintoSeleccionado.id);
+			}).error(errorHandler);
+				
+		};*/
+	
 	
 function errorHandler(error) {
         $scope.notificarError(error.data);
@@ -108,7 +113,18 @@ gatoEncerradoApp.controller('vistaLaberintoController', ['$scope', '$routeParams
           function($scope, $routeParams, $location, LaberintoService,$http,$timeout){
 			
 			$scope.labActual = laberintoSeleccionado;
-			console.log($scope.labActual)
+			console.log($scope.labActual);
+	
+		$scope.irAHabitacion=function(){
+		$location.path('/habitacion');
+		$http.get("/laberinto/1/" + laberintoSeleccionado.id).success(function(data){
+		//$scope.habitaciones = data.habitacionesMin;
+		habitacionActual = data.habitacionMostrar;
+		inventarioActual = data.inventarioMin;
+		console.log(laberintoSeleccionado.id);
+		}).error(errorHandler);
+			
+	};
 	
 	
 	/*
@@ -162,7 +178,36 @@ function errorHandler(error) {
 
 }]);
 
+gatoEncerradoApp.controller('habitacionController', ['$scope', '$routeParams', '$location', 'LaberintoService','$http','$timeout', 
+          function($scope, $routeParams, $location, LaberintoService,$http,$timeout){
+		$scope.nombrelab=laberintoSeleccionado.nombreLaberinto;
+		$scope.habitacionActual = habitacionActual;
+		$scope.inventarioActual = inventarioActual;
+		
+	function errorHandler(error) {
+        $scope.notificarError(error.data);
+    };
+		
+	$scope.msgs = [];
+    $scope.notificarMensaje = function(mensaje) {
+        $scope.msgs.push(mensaje);
+        $scope.notificar($scope.msgs);
+    };
 
+    $scope.errors = [];
+    $scope.notificarError = function(mensaje) {
+        $scope.errors.push(mensaje);
+        $scope.notificar($scope.errors);
+    };
+
+    $scope.notificar = function(mensajes) {
+        $timeout(function() {
+            while (mensajes.length > 0) mensajes.pop();
+        }, 3000);
+    };
+	
+}]);
+	
 /*gatoEncerradoApp.controller('HabitacionesController',function($scope, HabitacionService){
 	$scope.habitaciones = HabitacionService.getHabitaciones();
 });

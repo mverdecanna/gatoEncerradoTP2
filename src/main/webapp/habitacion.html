@@ -5,22 +5,21 @@
     <link rel="stylesheet" href="css/gatoEncerrado.css"/>
 
 
-    <h3 style="text-align:center">nombreLaberintoActual</h3>
+    <h3 style="text-align:center">{{nombrelab}}</h3>
 	<button type="button" class="btn btn-success" ng-click="mostrarLaberinto()"></button>
 
     <div   class="col-md-7">
     		<!-- 3 paneles.. habitacionActual, accionesDeLaHabitacion, inventarioJugador -->
     	<div id= "borderHabitacion"  class="col-md-8">
     	<div class="col-md-8">{{habitacionActual.nombre}}
-    		<a href="#laberinto"></a> <img id="imagenLaberinto" class="img-responsive grow"
-									ng-src="{{laberinto.pathImage}}" alt=""></a>
-							</div>
+    		<img class="img-responsive" ng-src="{{habitacionActual.pathImage}}" alt="">
+		</div>
         <ul class="list-unstyled">
             <li ng-repeat= "habitacion in habitaciones">
               {{habitacion.nombre}}
             </li>
         </ul>
-   			<p>habitacionActual es: {{habitacionActual.nombre}}</p>
+   			
    			<!-- aca va la imagen de la habitacionActual -->
 	    	<img class="img-responsive" src="" alt="">
    		</div>
