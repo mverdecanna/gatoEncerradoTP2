@@ -48,6 +48,8 @@ class RepoBibliotecaJuego {
 		val item4= new Item("La espada de He-man")
 		val item5= new Item ("El yo-yo de Magic")
 		val item6= new Item ("El Osito Teddy")
+		val item7= new Item("Objeto Inutil de Inventario")
+		val item8= new Item("Botella de Grog")
 		//Habitaciones
 		val hab3= new Habitacion ("Habitacion de la Reina")=>[
 			agregarElementoALaHabitacion(item2)
@@ -78,14 +80,14 @@ class RepoBibliotecaJuego {
 			esHabitacionInicial
 		]
 		//Laberintos
-		val lab2= new Laberinto("Laberinto Chevere")=>[
+		val lab2= new Laberinto("Laberinto Chevere","Es un laberinto entretenido")=>[
 			agregarHabitacionPreArmada(hab6)
 			agregarHabitacionPreArmada(hab5)
 			agregarHabitacionPreArmada(hab4)
 			
 		]
 		
-		val lab1= new Laberinto("Mansion de la Muerte") => [ 
+		val lab1= new Laberinto("Mansion de la Muerte","Si llegaste hasta aca venimos bien") => [ 
 			agregarHabitacionPreArmada(hab1)
 			agregarHabitacionPreArmada(hab2)
 			agregarHabitacionPreArmada(hab3)
@@ -114,6 +116,8 @@ class RepoBibliotecaJuego {
 		//Inicializacion de partidas
 		usuario1.inicializarPartida(biblioteca.laberintos.get(0))
 		usuario1.inicializarPartida(biblioteca.laberintos.get(1))
+		usuario1.partidaJugando.inventario.add(item8)
+		usuario1.partidaJugando.inventario.add(item7)
 		repoUsuario.agregarUsuario(usuario1)
 		
 		

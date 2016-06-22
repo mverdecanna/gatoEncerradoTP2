@@ -26,8 +26,12 @@ class JuegoTransformer {
 	//el nombre deberia de ser toLaberintoTo
 	def static List<LaberintoMin> toLaberintoTo(List<Laberinto> laberintos, RepoImagenes img) {
 		//la imagen puede ser un atributo del objeto laberinto
-		laberintos.map [lab| new LaberintoMin(lab.nombreLaberinto, img.getPath(lab.id), lab.id)]
+		laberintos.map [lab| new LaberintoMin(lab.nombreLaberinto,lab.descripcion, img.getPath(lab.id), lab.id)]
 	}
+	def static toInventarioLaberintoTo(EstadoDeJuego juego) 
+	   {
+	    return juego.inventario.map[item|ar.unq.edu.ciu.gatoEncerrado_xrest.controller.JuegoTransformer.toItemEnInventarioTo(item)]
+	    }
 
 	//el nombre deberia de ser toLaberintoEnCursoTo
 	def static toLaberintoEnCursoTo( Laberinto laberinto, EstadoDeJuego juego,RepoImagenes img) {

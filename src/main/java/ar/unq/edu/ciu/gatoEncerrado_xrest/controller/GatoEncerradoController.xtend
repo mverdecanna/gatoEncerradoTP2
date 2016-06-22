@@ -24,6 +24,7 @@ class GatoEncerradoController {
 		val laberintos = JuegoTransformer.toLaberintoTo(RepoBibliotecaJuego.instance.biblioteca.laberintos,
 			RepoBibliotecaJuego.instance.repoImagenes)
 		response.contentType = ContentType.APPLICATION_JSON;
+		println("PASE POR ACA")
 		ok(laberintos.toJson);
 	}
 
@@ -107,6 +108,23 @@ class GatoEncerradoController {
 			notFound("No existe la accion en la habitacion ");
 		}
 //
+	}
+
+	@Get("/inventario/:idlab/:iduser")
+	def Result  traerInventario(){
+		val idLab = Integer.valueOf(idlab)
+		val idUser = Integer.valueOf(iduser)
+
+		try {
+			response.contentType = "application/json"
+			val laberinto = RepoBibliotecaJuego.instance.buscarLab(idLab)
+			val estadoLab = RepoBibliotecaJuego.instance.repoUsuario.getUsuario(idUser).inicializarPartida(laberinto)
+			ok(JuegoTransformer.toInventarioLaberintoTo(estadoLab).toJson)
+	}
+	catch (UserException e){
+		notFound("No existe en el inv")
+		
+	}
 	}
 
 }
