@@ -113,9 +113,9 @@ class RepoBibliotecaJuego {
 			repoImagenes = new RepoImagenes;
 			repoUsuario = new RepoUsuarios
 		//Imagenes para el repo	
-		repoImagenes.agregarImagen(lab1.id,"imagenes/casa-terror.jpg")
-		repoImagenes.agregarImagen(lab2.id,"imagenes/laberinto1.jpg")
-		repoImagenes.agregarImagen(hab4.id,"imagenes/casa-embrujada.jpg")
+		repoImagenes.agregarImagen(lab1.id,"img923/6774/ujKH1s.jpg")
+		repoImagenes.agregarImagen(lab2.id,"img924/7259/OBSiVb.jpg")
+		repoImagenes.agregarImagen(lab3.id,"img924/9435/ZSwNh1.jpg")
 		repoImagenes.agregarImagen(hab5.id,"imagenes/casa-embrujada.jpg")
 		repoImagenes.agregarImagen(hab6.id,"imagenes/casa-embrujada.jpg")
 		repoImagenes.agregarImagen(hab3.id,"imagenes/habitacionTerror.jpg")	
@@ -129,6 +129,8 @@ class RepoBibliotecaJuego {
 		usuario1.inicializarPartida(biblioteca.laberintos.get(2))
 		usuario1.partidaJugando.inventario.add(item8)
 		usuario1.partidaJugando.inventario.add(item7)
+		usuario1.partidaJugando.inventario.add(item2)
+		usuario1.partidaJugando.inventario.add(item3)
 		repoUsuario.agregarUsuario(usuario1)
 		
 		
@@ -144,7 +146,8 @@ class RepoBibliotecaJuego {
 	
 	
 	def buscarLab(Integer integer) {
-		 return biblioteca.laberintos.findFirst[lab | lab.id.equals(integer)]
+		 return biblioteca.laberintos.get(2)
+		 //findFirst[lab | lab.id.equals(integer)]
 	}
 	
 
