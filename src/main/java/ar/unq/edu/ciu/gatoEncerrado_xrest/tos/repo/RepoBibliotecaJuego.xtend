@@ -86,18 +86,28 @@ class RepoBibliotecaJuego {
 			agregarHabitacionPreArmada(hab4)
 			
 		]
+		lab2.idHardcode = 2
 		
 		val lab1= new Laberinto("Mansion de la Muerte","Si llegaste hasta aca venimos bien") => [ 
 			agregarHabitacionPreArmada(hab1)
 			agregarHabitacionPreArmada(hab2)
 			agregarHabitacionPreArmada(hab3)
 		]
+		lab1.idHardcode=1
+		
+		val lab3= new Laberinto("Armada Invencible","La tercera es la vencida")=>[
+			agregarHabitacionPreArmada(hab5)
+			agregarHabitacionPreArmada(hab3)		
+		]
+		lab3.idHardcode=3
+		
 		//Usuario
 		val usuario1= new Jugador("NANANANABATMAN")
 		
 		biblioteca = new BibliotecaDeJuego() => [
 			agregarLaberinto(lab1)
-			agregarLaberinto(lab2) 
+			agregarLaberinto(lab2)
+			agregarLaberinto(lab3) 
 			
 			]
 			repoImagenes = new RepoImagenes;
@@ -116,6 +126,7 @@ class RepoBibliotecaJuego {
 		//Inicializacion de partidas
 		usuario1.inicializarPartida(biblioteca.laberintos.get(0))
 		usuario1.inicializarPartida(biblioteca.laberintos.get(1))
+		usuario1.inicializarPartida(biblioteca.laberintos.get(2))
 		usuario1.partidaJugando.inventario.add(item8)
 		usuario1.partidaJugando.inventario.add(item7)
 		repoUsuario.agregarUsuario(usuario1)

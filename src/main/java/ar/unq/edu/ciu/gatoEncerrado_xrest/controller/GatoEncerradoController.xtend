@@ -8,6 +8,7 @@ import org.uqbar.xtrest.api.annotation.Controller
 import org.uqbar.xtrest.api.annotation.Get
 import org.uqbar.xtrest.http.ContentType
 import org.uqbar.xtrest.json.JSONUtils
+import ar.unq.edu.ciu.gatoEncerrado_xrest.tos.repo.RepoUsuarios
 
 @Controller
 class GatoEncerradoController {
@@ -117,8 +118,14 @@ class GatoEncerradoController {
 
 		try {
 			response.contentType = "application/json"
+			println("el numero de lab es " + idLab)
+			val idLab3=RepoBibliotecaJuego.instance.biblioteca.laberintos.get(2).id
+			println(idLab3)
+			println(RepoBibliotecaJuego.instance.repoUsuario.getEstadoDeJuego(1,idLab3).inventario)
 			val laberinto = RepoBibliotecaJuego.instance.buscarLab(idLab)
+			println(laberinto)
 			val estadoLab = RepoBibliotecaJuego.instance.repoUsuario.getUsuario(idUser).inicializarPartida(laberinto)
+			println(estadoLab.inventario)
 			ok(JuegoTransformer.toInventarioLaberintoTo(estadoLab).toJson)
 	}
 	catch (UserException e){

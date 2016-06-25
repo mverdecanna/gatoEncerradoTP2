@@ -7,10 +7,10 @@ class LaberintoMin {
 	
 	String nombreLaberinto;
 	String pathImage;
-	int id;
+	Integer id;
 	String descripcion;
 	
-	new(String nombre,String des, String path, int id){
+	new(String nombre,String des, String path, Integer id){
 		this.nombreLaberinto = nombre;
 		this.pathImage = path;
 		this.id = id;
