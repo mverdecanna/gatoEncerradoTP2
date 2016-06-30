@@ -25,8 +25,8 @@ class GatoEncerradoController {
 		val laberintos = JuegoTransformer.toLaberintoTo(RepoBibliotecaJuego.instance.biblioteca.laberintos,
 			RepoBibliotecaJuego.instance.repoImagenes)
 		response.contentType = ContentType.APPLICATION_JSON;
-		println("PASE POR ACA")
-		ok(laberintos.toJson);
+		val labparamandar=laberintos.toJson
+		ok(labparamandar);
 	}
 
 	@Get("/laberinto/:iduser/:idlab")
@@ -39,30 +39,15 @@ class GatoEncerradoController {
 		try {
 			response.contentType = "application/json"
 			val laberinto = RepoBibliotecaJuego.instance.buscarLab(idLab)
+			println(laberinto)
 			val estadoLab = RepoBibliotecaJuego.instance.repoUsuario.getUsuario(idUser).inicializarPartida(laberinto)
-			ok(JuegoTransformer.toLaberintoEnCursoTo(laberinto, estadoLab,RepoBibliotecaJuego.instance.repoImagenes).toJson)
+			ok(JuegoTransformer.toLaberintoAlone(laberinto, RepoBibliotecaJuego.instance.repoImagenes).toJson)
 		} catch (UserException e) {
 			// aca lo ideal es que sea la excepcion la que tenga la info extra que necestitas, y en vez de que sea una generica, que sea una excepcion particular para tu dominio
 			notFound("No existe el laberinto con '" + idLab + "'");
 		}
 	}
 	
-	@Get("/laberinto/:iduser")
-	def Result laberintoo(){
-		val idUser=Integer.valueOf(iduser)
-		
-		try {
-			response.contentType = "application/json"
-			val est = RepoBibliotecaJuego.instance.repoUsuario.getUsuario(idUser).partidaJugando
-			val habitacion = RepoBibliotecaJuego.instance.repoUsuario.getUsuario(idUser).partidaJugando.habitacionActual
-			ok(JuegoTransformer.toHabitacionEnLaberintoTo(habitacion,est,RepoBibliotecaJuego.instance.repoImagenes).toJson)
-			}
-		catch(UserException e) {
-			// aca lo ideal es que sea la excepcion la que tenga la info extra que necestitas, y en vez de que sea una generica, que sea una excepcion particular para tu dominio
-			notFound("No existe el laberinto con '" +  "'");
-		}
-		
-	}
 		
 	@Get("/hacerAccion/:idhab/:idacc/:iduser")
 	def Result hacerAccion() {
@@ -118,12 +103,8 @@ class GatoEncerradoController {
 
 		try {
 			response.contentType = "application/json"
-			println("el numero de lab es " + idLab)
-			val idLab3=RepoBibliotecaJuego.instance.biblioteca.laberintos.get(2).id
-			println(idLab3)
-			println(RepoBibliotecaJuego.instance.repoUsuario.getEstadoDeJuego(1,idLab3).inventario)
+			//val idLab3=RepoBibliotecaJuego.instance.biblioteca.laberintos.get(2).id
 			val laberinto = RepoBibliotecaJuego.instance.buscarLab(idLab)
-			println(laberinto)
 			val estadoLab = RepoBibliotecaJuego.instance.repoUsuario.getUsuario(idUser).inicializarPartida(laberinto)
 			println(estadoLab.inventario)
 			ok(JuegoTransformer.toInventarioLaberintoTo(estadoLab).toJson)

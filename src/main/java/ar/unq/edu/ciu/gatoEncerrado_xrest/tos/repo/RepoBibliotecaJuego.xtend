@@ -79,6 +79,7 @@ class RepoBibliotecaJuego {
 			agregarAccion(new AccionAgarrarUnElemento(item5))
 			esHabitacionInicial
 		]
+		
 		//Laberintos
 		val lab2= new Laberinto("Laberinto Chevere","Es un laberinto entretenido")=>[
 			agregarHabitacionPreArmada(hab6)
@@ -86,20 +87,21 @@ class RepoBibliotecaJuego {
 			agregarHabitacionPreArmada(hab4)
 			
 		]
-		lab2.idHardcode = 2
+		lab2.idHardcode = 5
 		
 		val lab1= new Laberinto("Mansion de la Muerte","Si llegaste hasta aca venimos bien") => [ 
 			agregarHabitacionPreArmada(hab1)
 			agregarHabitacionPreArmada(hab2)
 			agregarHabitacionPreArmada(hab3)
 		]
-		lab1.idHardcode=1
+		lab1.idHardcode=4
 		
 		val lab3= new Laberinto("Armada Invencible","La tercera es la vencida")=>[
+			agregarHabitacionPreArmada(hab6)
 			agregarHabitacionPreArmada(hab5)
-			agregarHabitacionPreArmada(hab3)		
+			agregarHabitacionPreArmada(hab4)
 		]
-		lab3.idHardcode=3
+		lab3.idHardcode=6
 		
 		//Usuario
 		val usuario1= new Jugador("NANANANABATMAN")
@@ -125,11 +127,11 @@ class RepoBibliotecaJuego {
 		
 		//Inicializacion de partidas
 		usuario1.inicializarPartida(biblioteca.laberintos.get(0))
-		usuario1.inicializarPartida(biblioteca.laberintos.get(1))
-		usuario1.inicializarPartida(biblioteca.laberintos.get(2))
 		usuario1.partidaJugando.inventario.add(item8)
 		usuario1.partidaJugando.inventario.add(item7)
+		usuario1.inicializarPartida(biblioteca.laberintos.get(1))
 		usuario1.partidaJugando.inventario.add(item2)
+		usuario1.inicializarPartida(biblioteca.laberintos.get(2))	
 		usuario1.partidaJugando.inventario.add(item3)
 		repoUsuario.agregarUsuario(usuario1)
 		
@@ -146,8 +148,7 @@ class RepoBibliotecaJuego {
 	
 	
 	def buscarLab(Integer integer) {
-		 return biblioteca.laberintos.get(2)
-		 //findFirst[lab | lab.id.equals(integer)]
+		 return biblioteca.laberintos.findFirst[lab | lab.id.equals(integer)]
 	}
 	
 
